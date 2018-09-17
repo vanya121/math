@@ -8,7 +8,11 @@ def get_fibonacci_value(first, second, position_value):
     :param second_value: Second value of fibonacci sequence
     :return: value of fibonacci sequence on given position
     """
-    cnt = 0
+    if position_value == 1:
+        return first
+    if position_value == 2:
+        return second
+    cnt = 3
     value = first + second
     while cnt < position_value:
         first = second
