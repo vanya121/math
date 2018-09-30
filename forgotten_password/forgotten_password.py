@@ -1,4 +1,5 @@
 #!/usr/bin/python
+from typing import List
 import itertools
 
 
