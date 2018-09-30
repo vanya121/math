@@ -35,9 +35,3 @@ def generate_passwords(words):
     password = uniq(password)
     password.sort()
     return password
-
-
-if __name__ == '__main__':
-    words = input().strip().split()
-    for pswd in generate_passwords(words):
-        print(pswd)
