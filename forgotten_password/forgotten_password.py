@@ -2,6 +2,16 @@
 import itertools
 
 
+def uniq(elements):
+    ans = list()
+    while len(elements) > 0:
+        element = elements[0]
+        ans.append(element)
+        for i in range(elements.count(element)):
+            elements.remove(element)
+    return ans
+
+
 def generate_permnutations(words):
     answer = list()
     ans = list(itertools.permutations(words))
@@ -22,6 +32,7 @@ def generate_passwords(words):
             cnt += 1
             k = k // 2
         password += generate_permnutations(subset)
+    password = uniq(password)
     password.sort()
     return password
 
