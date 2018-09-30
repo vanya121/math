@@ -1,6 +1,16 @@
 #!/usr/bin/python
 
 
+def uniq(elements):
+    ans = list()
+    while len(elements) > 0:
+        element = elements[0]
+        ans.append(element)
+        for i in range(elements.count(element)):
+            elements.remove(element)
+    return ans
+
+
 def password_strength(password):
     if len(password) < 8:
         return 'weak'
@@ -11,14 +21,12 @@ def password_strength(password):
     if any(map(str.isdigit, password)) == 0:
         return 'weak'
     if any(map(str.isalpha, password)) == 0:
-        return 'weak'
+        return 'weak5'
     password = password.lower()
     if password.find('anna') != -1:
         return 'weak'
-    summ = 0
-    for elem in password:
-        summ += password.count(elem)
-    if summ > 21*len(password)//8:
+    password_list = list(password)
+    if len(uniq(password_list)) < 4:
         return 'weak'
     return 'strong'
 
