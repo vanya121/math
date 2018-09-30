@@ -18,7 +18,7 @@ def password_strength(password):
     summ = 0
     for elem in password:
         summ += password.count(elem)
-    if summ > 21:
+    if summ > 21*len(password)//8:
         return 'weak'
     return 'strong'
 
