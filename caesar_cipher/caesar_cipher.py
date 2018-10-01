@@ -8,10 +8,8 @@ def caesar_encrypt(st, n):
             sym = chr((ord(elem) - ord('a') + n) % 26 + ord('a'))
         elif ord(elem) <= ord('Z') and ord(elem) >= ord('A'):
             sym = chr((ord(elem) - ord('A') + n) % 26 + ord('A'))
-        elif elem == ' ':
-            sym = ' '
         else:
-            sym = chr(ord(elem) + n)
+            sym = ' '
         encrypt += sym
     return encrypt
 
