@@ -33,6 +33,6 @@ def generate_passwords(words):
             cnt += 1
             k = k // 2
         password += generate_permnutations(subset)
-    password = uniq(password)
-    password.sort()
+#    password = uniq(password)
+#    password.sort()
     return password
