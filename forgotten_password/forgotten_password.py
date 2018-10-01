@@ -23,6 +23,7 @@ def generate_permnutations(words):
 
 def generate_passwords(words):
     password = list()
+    return password
     for i in range(1, 2 ** len(words)):
         subset = list()
         k = i
