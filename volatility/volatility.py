@@ -20,5 +20,6 @@ def compute_volatility(
         for key2 in seq:
             D += seq[key2] ** 2 - M ** 2
         D = math.sqrt(D / (cnt - 1))
-        answer += D * investments[key] / seq1[start_date] * (seq1[end_date] - seq1[start_date])/abs(seq1[end_date] - seq1[start_date])
+        sgn = (seq1[end_date] - seq1[start_date]) / abs(seq1[end_date] - seq1[start_date])
+        answer += D * investments[key] / seq1[start_date] * sgn
     return answer
