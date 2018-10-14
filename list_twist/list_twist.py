@@ -20,13 +20,13 @@ class ListTwist(UserList):
 
     def __len__(self):
         return len(self.data)
-
+    
     def __setattr__(self, attr, value):
         if attr == 'data':
             self.__dict__[attr] = value
         if attr == 'last' or attr == 'L':
             if not self.data:
-                raise NotImplementedError
+                return 0
             attr = self.aliases.get(attr, attr)
             UserList.__setattr__(self, attr, value)
             self.__dict__['last'] = value
@@ -34,7 +34,7 @@ class ListTwist(UserList):
             self.__dict__['data'].append(value)
         if attr == 'first' or attr == 'F':
             if not self.data:
-                raise NotImplementedError
+                return 0
             attr = self.aliases1.get(attr, attr)
             UserList.__setattr__(self, attr, value)
             self.__dict__['first'] = value
@@ -42,7 +42,7 @@ class ListTwist(UserList):
             self.__dict__['data'].insert(0, value)
         if attr == 'size' or attr == 'S':
             if value < 0:
-                raise NotImplementedError
+                return 0
             elif value == 0:
                 self.__dict__['data'].clear()
                 self.__dict__['last'] = None
@@ -62,7 +62,7 @@ class ListTwist(UserList):
     def __getattr__(self, attr):
         if attr == 'first' or attr == 'F':
             if not self.data:
-                raise NotImplementedError
+                return 0
             else:
                 self.first = self.data[0]
                 attr = self.aliases1.get(attr, attr)
@@ -70,7 +70,7 @@ class ListTwist(UserList):
                 return self.first
         if attr == 'last' or attr == 'L':
             if not self.data:
-                raise NotImplementedError
+                return 0
             else:
                 self.last = self.data[len(self.data) - 1]
                 attr = self.aliases.get(attr, attr)
