@@ -61,13 +61,13 @@ class ListTwist(UserList):
 
     def __getattr__(self, attr):
         if attr == 'first' or attr == 'F':
-            if len(self.data) == 0:
+            if not self.data:
                 raise NotImplementedError
             else:
                 self.first = self.data[0]
                 return self.first
         if attr == 'last' or attr == 'L':
-            if len(self.data) == 0:
+            if not self.data:
                 raise NotImplementedError
             else:
                 self.last = self.data[len(self.data) - 1]
@@ -76,9 +76,5 @@ class ListTwist(UserList):
             if not self.data:
                 raise NotImplementedError
             return self.data[::-1]
-        if attr == 'last' or attr == 'L':
-            if not self.data:
-                raise NotImplementedError
-            return self.data[len(self.data) - 1]
         if attr == 'size' or attr == 'S':
             return len(self.data)
