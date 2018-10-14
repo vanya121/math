@@ -10,6 +10,10 @@ class ListTwist(UserList):
         'last': 'L',
         'another': 'L',
         }
+    aliases2 = {
+        'size': 'S',
+        'another': 'S',
+        }
 
     def __init__(self, data=[]):
         super().__init__(data)
@@ -36,6 +40,24 @@ class ListTwist(UserList):
             self.__dict__['first'] = value
             self.__dict__['data'].pop(0)
             self.__dict__['data'].insert(0, value)
+        if attr == 'size' or attr == 'S':
+            if value < 0:
+                raise NotImplementedError
+            elif value == 0:
+                self.__dict__['data'].clear()
+                self.__dict__['last'] = None
+                self.__dict__['first'] = None
+            else:
+                attr = self.aliases1.get(attr, attr)
+                UserList.__setattr__(self, attr, value)
+                if value < len(self.__dict__['data']):
+                    while value < len(self.__dict__['data']):
+                        self.__dict__['data'].pop()
+                if value > len(self.__dict__['data']):
+                    while value > len(self.__dict__['data']):
+                        self.__dict__['data'].append(None)
+                self.__dict__['last'] = (self.__dict__['data'])[len(self.data) - 1]
+                self.__dict__['first'] = (self.__dict__['data'])[0]
 
     def __getattr__(self, attr):
         if attr == 'reversed' or attr == 'R':
