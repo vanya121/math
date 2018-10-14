@@ -44,7 +44,7 @@ class ListTwist(UserList):
             return self.data[::-1]
         if attr == 'last' or attr == 'L':
             if not self.data:
-                raise AttributeError    
+                raise AttributeError
             return self.data[len(self.data) - 1]
         if attr == 'size' or attr == 'S':
             return len(self.data)
