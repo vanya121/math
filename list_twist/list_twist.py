@@ -48,7 +48,7 @@ class ListTwist(UserList):
                 self.__dict__['last'] = None
                 self.__dict__['first'] = None
             else:
-                attr = self.aliases1.get(attr, attr)
+                attr = self.aliases2.get(attr, attr)
                 UserList.__setattr__(self, attr, value)
                 if value < len(self.__dict__['data']):
                     while value < len(self.__dict__['data']):
