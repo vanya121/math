@@ -25,33 +25,35 @@ class ListTwist(UserList):
         if attr == 'data':
             self.__dict__[attr] = value
         if attr == 'last' or attr == 'L':
-            attr = self.aliases.get(attr, attr)
-            UserList.__setattr__(self, attr, value)
-            self.__dict__['last'] = value
             if not self.data:
                 return 0
             else:
+                attr = self.aliases.get(attr, attr)
+                UserList.__setattr__(self, attr, value)
+                self.__dict__['last'] = value
                 self.__dict__['data'].pop()
                 self.__dict__['data'].append(value)
         if attr == 'first' or attr == 'F':
-            attr = self.aliases1.get(attr, attr)
-            UserList.__setattr__(self, attr, value)
-            self.__dict__['first'] = value
             if not self.data:
                 return 0
             else:
+                attr = self.aliases1.get(attr, attr)
+                UserList.__setattr__(self, attr, value)
+                self.__dict__['first'] = value
                 self.__dict__['data'].pop(0)
                 self.__dict__['data'].insert(0, value)
         if attr == 'size' or attr == 'S':
-            attr = self.aliases2.get(attr, attr)
-            UserList.__setattr__(self, attr, value)
             if value < 0:
                 return 0
             elif value == 0:
                 self.__dict__['data'].clear()
                 self.__dict__['last'] = None
                 self.__dict__['first'] = None
+                attr = self.aliases2.get(attr, attr)
+                UserList.__setattr__(self, attr, value)
             else:
+                attr = self.aliases2.get(attr, attr)
+                UserList.__setattr__(self, attr, value)
                 if value < len(self.__dict__['data']):
                     while value < len(self.__dict__['data']):
                         self.__dict__['data'].pop()
@@ -60,15 +62,17 @@ class ListTwist(UserList):
                         self.__dict__['data'].append(None)
                 self.__dict__['last'] = (self.__dict__['data'])[len(self.data) - 1]
                 self.__dict__['first'] = (self.__dict__['data'])[0]
+                attr = self.aliases2.get(attr, attr)
+                UserList.__setattr__(self, attr, value)
 
     def __getattr__(self, attr):
         if attr == 'first' or attr == 'F':
             if not self.data:
                 return 0
             else:
+                self.first = self.data[0]
                 attr = self.aliases1.get(attr, attr)
                 UserList.__getattribute__(self, attr)
-                self.first = self.data[0]
                 return self.first
         if attr == 'last' or attr == 'L':
             if not self.data:
