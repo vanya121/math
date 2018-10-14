@@ -60,6 +60,18 @@ class ListTwist(UserList):
                 self.__dict__['first'] = (self.__dict__['data'])[0]
 
     def __getattr__(self, attr):
+        if attr == 'first' or attr == 'F':
+            if len(self.data) == 0:
+                raise NotImplementedError
+            else:
+                self.first = self.data[0]
+                return self.first
+        if attr == 'last' or attr == 'L':
+            if len(self.data) == 0:
+                raise NotImplementedError
+            else:
+                self.last = self.data[len(self.data) - 1]
+                return self.last
         if attr == 'reversed' or attr == 'R':
             if not self.data:
                 raise NotImplementedError
