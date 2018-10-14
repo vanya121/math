@@ -65,16 +65,21 @@ class ListTwist(UserList):
                 raise NotImplementedError
             else:
                 self.first = self.data[0]
+                attr = self.aliases1.get(attr, attr)
+                UserList.__getattribute__(self, attr)
                 return self.first
         if attr == 'last' or attr == 'L':
             if not self.data:
                 raise NotImplementedError
             else:
                 self.last = self.data[len(self.data) - 1]
+                attr = self.aliases.get(attr, attr)
+                UserList.__getattribute__(self, attr)
                 return self.last
         if attr == 'reversed' or attr == 'R':
-            if not self.data:
-                raise NotImplementedError
             return self.data[::-1]
         if attr == 'size' or attr == 'S':
+            self.size = len(self.data)
+            attr = self.aliases2.get(attr, attr)
+            UserList.__getattribute__(self, attr)
             return len(self.data)
