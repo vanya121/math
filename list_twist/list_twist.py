@@ -20,7 +20,7 @@ class ListTwist(UserList):
 
     def __len__(self):
         return len(self.data)
-    
+
     def __setattr__(self, attr, value):
         if attr == 'data':
             self.__dict__[attr] = value
