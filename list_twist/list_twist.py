@@ -29,8 +29,7 @@ class ListTwist(UserList):
             UserList.__setattr__(self, attr, value)
             self.__dict__['last'] = value
             if not self.data:
-                self.__dict__['first'] = value
-                self.__dict__['data'].append(value)
+                return 0
             else:
                 self.__dict__['data'].pop()
                 self.__dict__['data'].append(value)
@@ -39,8 +38,7 @@ class ListTwist(UserList):
             UserList.__setattr__(self, attr, value)
             self.__dict__['first'] = value
             if not self.data:
-                self.__dict__['last'] = value
-                self.__dict__['data'].append(value)
+                return 0
             else:
                 self.__dict__['data'].pop(0)
                 self.__dict__['data'].insert(0, value)
