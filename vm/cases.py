@@ -11,6 +11,32 @@ TEST_CASES = [
 print(17)
 """),
     Case(
+        name="bbb",
+        text_code=r"""
+a = 1
+b = 2
+print(a + b)
+"""),
+    Case(
+        name="bbb2",
+        text_code=r"""
+a = 1
+b = 2
+print(a * b)
+"""),
+    Case(
+        name="bbb3",
+        text_code=r"""
+a = 2
+b = 3
+print(a ** b)
+"""),
+    Case(
+        name="const2",
+        text_code=r"""
+print(2 ** 3)
+"""),
+    Case(
         name="test102",
         text_code=r"""
 d = {1: 2, 3: 4}
