@@ -22,6 +22,8 @@ class VirtualMachine:
                 self.dic[item.argval] = tmp
 
             if item.opname == 'LOAD_CONST':
+                if item.argval is not None:
+                    self.dic[item.argval] = item.argval
                 self.stack.append(item.argval)
 
             if item.opname == 'BINARY_ADD':
@@ -84,12 +86,19 @@ class VirtualMachine:
                 TOS1 = self.dic[self.stack.pop()]
                 self.stack.append(TOS1 / TOS)
 
+            if item.opname == 'BINARY_XOR':
+                TOS = self.dic[self.stack.pop()]
+                TOS1 = self.dic[self.stack.pop()]
+                self.stack.append(TOS1 ^ TOS)
+
             if item.opname == 'CALL_FUNCTION':
                 arg = self.stack.pop()
                 func = self.stack.pop()
                 f = builtins.__dict__[func](arg)
                 self.stack.append(f)
+
             if item.opname == 'POP_TOP':
                 self.stack.pop()
+
             if item.opname == 'RETURN_VALUE':
                 return self.stack.pop()

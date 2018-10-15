@@ -32,6 +32,13 @@ b = 3
 print(a ** b)
 """),
     Case(
+        name="QWERR",
+        text_code=r"""
+a = 2
+print(a ** 2)
+"""),
+
+    Case(
         name="const2",
         text_code=r"""
 print(2 ** 3)
