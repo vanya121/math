@@ -50,10 +50,10 @@ d = {1: 2, 3: 4}
 print(d[1])
 """),
     Case(
-        name="test102",
+        name="test1024",
         text_code=r"""
 d = 9
-d *= 3 
+d *= 3
 print(d)
 """),
     Case(
@@ -93,5 +93,21 @@ print(a)
 a = 1
 a += 1
 print(a)
+"""),
+    Case(
+        name="14",
+        text_code=r"""
+a = 1
+if a > 0:
+    print(a)
+"""),
+    Case(
+        name="14",
+        text_code=r"""
+a = 1
+if a > 2:
+    print(1)
+else:
+    print(0)
 """)
 ]
