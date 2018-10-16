@@ -79,17 +79,6 @@ class VirtualMachine:
                         it -= 1
                         item = a[it]
 
-            if item.opname == 'JUMP_ABSOLUTE':
-                offset = item.argval
-                if offset > item.offset:
-                    while offset > item.offset:
-                        it += 1
-                        item = a[it]
-                if offset < item.offset:
-                    while offset < item.offset:
-                        it -= 1
-                        item = a[it]
-
             if item.opname == 'LOAD_NAME':
                 self.stack.append(item.argval)
 
