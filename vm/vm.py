@@ -10,10 +10,75 @@ class VirtualMachine:
 
     def run(self, code: types.CodeType):
         a = list(dis.get_instructions(code))
-        for item in a:
+        it = 0
+        while True:
+            item = a[it]
 #            print(self.stack)
 #            print(self.dic)
 #            print(item)
+            if item.opname == 'POP_JUMP_IF_FALSE':
+                offset = item.argval
+                if self.stack.pop() == False:
+                    if offset > item.offset:
+                        while offset > item.offset:
+                            it += 1
+                            item = a[it]
+                    if offset < item.offset:
+                        while offset < item.offset:
+                            it -= 1
+                            item = a[it]
+
+            if item.opname == 'POP_JUMP_IF_TRUE':
+                offset = item.argval
+                if self.stack.pop() == True:
+                    if offset > item.offset:
+                        while offset > item.offset:
+                            it += 1
+                            item = a[it]
+                    if offset < item.offset:
+                        while offset < item.offset:
+                            it -= 1
+                            item = a[it]
+
+            if item.opname == 'JUMP_IF_FALSE_OR_POP':
+                offset = item.argval
+                TOS = self.stack.pop()
+                if TOS == False:
+                    if offset > item.offset:
+                        while offset > item.offset:
+                            it += 1
+                            item = a[it]
+                    if offset < item.offset:
+                        while offset < item.offset:
+                            it -= 1
+                            item = a[it]
+                    self.stack.append(TOS)
+
+            if item.opname == 'JUMP_IF_TRUE_OR_POP':
+                offset = item.argval
+                TOS = self.stack.pop()
+                if TOS == True:
+                    if offset > item.offset:
+                        while offset > item.offset:
+                            it += 1
+                            item = a[it]
+                    if offset < item.offset:
+                        while offset < item.offset:
+                            it -= 1
+                            item = a[it]
+                    self.stack.append(TOS)
+
+            if item.opname == 'JUMP_FORWARD':
+                offset = item.argval
+                if offset > item.offset:
+                    while offset > item.offset:
+                        it += 1
+                        item = a[it]
+                if offset < item.offset:
+                    while offset < item.offset:
+                        it -= 1
+                        item = a[it]
+
             if item.opname == 'LOAD_NAME':
                 self.stack.append(item.argval)
 
@@ -152,26 +217,46 @@ class VirtualMachine:
                 self.stack.append(TOS1[TOS])
 
             if item.opname == 'COMPARE_OP':
-                a = self.stack.pop()
-                if a in self.dic:
-                    a = self.dic[a]
+                tos = self.stack.pop()
+                if tos in self.dic:
+                    tos = self.dic[tos]
                 b = self.stack.pop()
                 if b in self.dic:
                     b = self.dic[b]
                 if item.argval == '>':
-                    self.stack.append(a < b)
+                    self.stack.append(tos < b)
                 if item.argval == '<':
-                    self.stack.append(a > b)
+                    self.stack.append(tos > b)
                 if item.argval == '==':
-                    self.stack.append(a == b)
+                    self.stack.append(tos == b)
                 if item.argval == '!=':
-                    self.stack.append(a != b)
+                    self.stack.append(tos != b)
                 if item.argval == '<=':
-                    self.stack.append(a >= b)
+                    self.stack.append(tos >= b)
                 if item.argval == '>=':
-                    self.stack.append(a <= b)
-            if item.opname == 'POP_JUMP_IF_FALSE':
-                pass
+                    self.stack.append(tos <= b)
+                if item.argval == 'in':
+                    self.stack.append(b in tos)
+
+            if item.opname == 'BUILD_LIST':
+                new_list = []
+                while self.stack:
+                    new_list.append(self.stack.pop())
+                new_list = new_list[::-1]
+                self.stack.append(new_list)
+
+            if item.opname == 'BUILD_TUPLE':
+                new_list = ()
+                while self.stack:
+                    new_list.append(self.stack.pop())
+                new_list = new_list[::-1]
+                self.stack.append(new_list)
+
+            if item.opname == 'BUILD_SET':
+                new_list = set()
+                while self.stack:
+                    new_list.add(self.stack.pop())
+                self.stack.append(new_list)
 
             if item.opname == 'CALL_FUNCTION':
                 z = self.stack.pop()
@@ -185,3 +270,4 @@ class VirtualMachine:
 
             if item.opname == 'RETURN_VALUE':
                 return self.stack.pop()
+            it += 1

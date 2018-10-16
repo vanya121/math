@@ -102,12 +102,51 @@ if a > 0:
     print(a)
 """),
     Case(
-        name="14",
+        name="15",
         text_code=r"""
 a = 1
 if a > 2:
     print(1)
 else:
     print(0)
+"""),
+    Case(
+        name="16",
+        text_code=r"""
+a = 10
+if a > 2:
+    print(1)
+else:
+    print(0)
+"""),
+    Case(
+        name="17",
+        text_code=r"""
+a = 3
+while a == 3:
+    a += 1
+"""),
+    Case(
+        name="18",
+        text_code=r"""
+a = [1, 2, 3]
+print(a[0])
+"""),
+    Case(
+        name="19",
+        text_code=r"""
+a = (1, 2, 3)
+print(a[0])
+"""),
+Case(
+        name="21",
+        text_code=r"""
+a = {'a', 2, 'c'}
+print('c' in a)
+"""),
+Case(
+        name="22",
+        text_code=r"""
+print(1 & 0)
 """)
 ]
