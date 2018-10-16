@@ -152,7 +152,7 @@ print(1 & 0)
 Case(
     name="23",
     text_code=r"""
-for i in range(10):
+for i in range(2):
     print(i)
 """)
 ]

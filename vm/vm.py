@@ -79,6 +79,17 @@ class VirtualMachine:
                         it -= 1
                         item = a[it]
 
+            if item.opname == 'JUMP_ABSOLUTE':
+                offset = item.argval
+                if offset > item.offset:
+                    while offset > item.offset:
+                        it += 1
+                        item = a[it]
+                if offset < item.offset:
+                    while offset < item.offset:
+                        it -= 1
+                        item = a[it]
+
             if item.opname == 'LOAD_NAME':
                 self.stack.append(item.argval)
 
@@ -237,6 +248,12 @@ class VirtualMachine:
                     self.stack.append(tos <= b)
                 if item.argval == 'in':
                     self.stack.append(b in tos)
+                if item.argval == 'or':
+                    self.stack.append(b or tos)
+                if item.argval == 'and':
+                    self.stack.append(b and tos)
+                if item.argval == 'is':
+                    self.stack.append(b is tos)
 
             if item.opname == 'BUILD_LIST':
                 new_list = []
