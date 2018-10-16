@@ -149,7 +149,7 @@ class VirtualMachine:
             if item.opname == 'BINARY_ADD' or item.opname == 'INPLACE_ADD':
                 TOS = self.dic[self.stack.pop()]
                 TOS1 = self.dic[self.stack.pop()]
-                self.stack.append(TOS + TOS1)
+                self.stack.append(TOS1 + TOS)
 
             if item.opname == 'BINARY_FLOOR_DIVIDE' or item.opname == 'INPLACE_FLOOR_DIVIDE':
                 TOS = self.dic[self.stack.pop()]
@@ -267,12 +267,27 @@ class VirtualMachine:
             if item.opname == 'CALL_FUNCTION':
                 z = self.stack.pop()
                 if z in self.dic:
-                    arg = self.dic[z]
-                else:
-                    arg = z
+                    z = self.dic[z]
                 func = self.stack.pop()
-                f = builtins.__dict__[func](arg)
+                h = func.find('.')
+                if h != -1:
+                    q = func.split('.', 1)
+                    first = q[0]
+                    second = q[1]
+                    f = first.join(z)
+                else:
+                    f = builtins.__dict__[func](z)
                 self.stack.append(f)
+            
+            if item.opname == 'BUILD_STRING':
+                string = ''
+                while self.stack:
+                    string = str(self.stack.pop()) + string
+                self.stack.append(string)
+            
+            if item.opname == 'LOAD_ATTR':
+                joi = self.stack.pop()
+                self.stack.append(joi + '.' + item.argval)
 
             if item.opname == 'RETURN_VALUE':
                 return self.stack.pop()
