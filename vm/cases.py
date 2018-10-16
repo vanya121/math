@@ -145,8 +145,14 @@ a = {'a', 2, 'c'}
 print('c' in a)
 """),
 Case(
-        name="22",
-        text_code=r"""
+    name="22",
+    text_code=r"""
 print(1 & 0)
+"""),
+Case(
+    name="23",
+    text_code=r"""
+for i in range(10):
+    print(i)
 """)
 ]
