@@ -11,9 +11,9 @@ class VirtualMachine:
     def run(self, code: types.CodeType):
         a = list(dis.get_instructions(code))
         for item in a:
-#            print(self.stack)
-#            print(self.dic)
-#            print(item)
+            print(self.stack)
+            print(self.dic)
+            print(item)
             if item.opname == 'LOAD_NAME':
                 self.stack.append(item.argval)
 
