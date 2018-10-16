@@ -31,12 +31,12 @@ class VirtualMachine:
                 TOS1 = self.dic[self.stack.pop()]
                 self.stack.append(TOS + TOS1)
 
-            if item.opname == 'BINARY_FLOOR_DIVIDE' or item.opname == 'INPLACE_ADD':
+            if item.opname == 'BINARY_FLOOR_DIVIDE' or item.opname == 'FLOOR_DIVIDE':
                 TOS = self.dic[self.stack.pop()]
                 TOS1 = self.dic[self.stack.pop()]
                 self.stack.append(TOS1 // TOS)
 
-            if item.opname == 'BINARY_LSHIFT' or item.opname == 'INPLACE_ADD':
+            if item.opname == 'BINARY_LSHIFT' or item.opname == 'INPLACE_LSHIFT':
                 TOS = self.dic[self.stack.pop()]
                 TOS1 = self.dic[self.stack.pop()]
                 self.stack.append(TOS1 << TOS)
