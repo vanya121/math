@@ -5,7 +5,7 @@ def parse_color(color):
     try:
         color = ''.join(color.split())
         answer = {}
-        if color[0] == '#':
+        if color[0] == r'#':
             color = color.lower()
             for i in range(6):
                 if color[i + 1] > 'f' or color[i + 1] < 'a':
@@ -33,7 +33,7 @@ def parse_color(color):
             color = color.split(',')
             ans = []
             for i in range(3):
-                if color[i + 1][len(color[i + 1]) - 1] == '%':
+                if color[i + 1][len(color[i + 1]) - 1] == r'%':
                     color[i + 1] = color[i + 1][:-1]
                     ans.append(int(color[i + 1]) * 255 // 100)
                 else:
@@ -51,3 +51,11 @@ def parse_color(color):
         return total_answer
     except Exception:
         return None
+
+
+if __name__ == "__main__":
+    print([parse_color('#Abaaaa'),
+    parse_color('1as, 2, 30'),
+    parse_color('bgr(-1, 22, 13)'),
+    parse_color('rgb(4%, 5%, 101%)'),
+    parse_color('rgb(1, 2, 3)')])
