@@ -48,7 +48,7 @@ def shuffle_text(text, letters_to_shuffle):
             sh_lft = []
             sh_rgt = []
             for d in sh:
-                if j < letters_to_shuffle:
+                if j < letters_to_shuffle + 1:
                     sh_lft.append(d)
                 else:
                     sh_rgt.append(d)
