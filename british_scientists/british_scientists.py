@@ -44,17 +44,23 @@ def shuffle_text(text, letters_to_shuffle):
         if a[i] == 1:
             sh.append(new_text[i])
         if a[i] == 2:
-            j = 0
-            sh_lft = []
-            sh_rgt = []
-            for d in sh:
-                if j < letters_to_shuffle:
-                    sh_lft.append(d)
-                else:
-                    sh_rgt.append(d)
-                j += 1
-            random.shuffle(sh_lft)
-            sh = sh_lft + sh_rgt
+            number = {}
+            for j in range(len(sh)):
+                number[j] = sh[j]
+            sigma = {}
+            tmp = []
+            for j in range(len(sh)):
+                tmp.append(j)
+            for j in range(len(sh)):
+                sigma[j] = j
+            tr = random.sample(tmp, min(letters_to_shuffle, len(sh)))
+            for k in range(len(tr) - 1):
+                sigma[tr[k]] = sigma[tr[k + 1]]
+            if len(tr) > 0:
+                sigma[tr[len(tr) - 1]] = tr[0]
+            sh = []
+            for key in sigma:
+                sh += number[sigma[key]]
             answer += sh
             sh = []
             answer.append(new_text[i])
@@ -64,4 +70,4 @@ def shuffle_text(text, letters_to_shuffle):
 
 if __name__ == "__main__":
     text = 'рассмотрим плоскость  и две параллельные прямые'
-    print(shuffle_text(text, 2))
+    print(shuffle_text(text, 3))
