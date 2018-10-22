@@ -6,12 +6,14 @@ def parse_color(color):
     answer = {}
     if color[0] == '#':
         color = color.lower()
+        for i in range(6):
+            if color[i + 1] > 'f' or color[i + 1] < 'a':
+                return None
         for i in range(3):
             r = ord(color[2 * i + 2]) - ord('a') + 10
             value = (ord(color[2 * i + 1]) - ord('a') + 10) * 16 + r
             if value > 255:
-                print('None')
-                return
+                return None
             if i == 0:
                 answer['r'] = value
             if i == 1:
@@ -42,12 +44,7 @@ def parse_color(color):
     total_answer.append(answer['r'])
     total_answer.append(answer['g'])
     total_answer.append(answer['b'])
+    for i in range(3):
+        if total_answer[i] < 0 or total_answer[i] > 255:
+            return None
     return total_answer
-
-
-if __name__ == "__main__":
-    parse_color('#AAaaaa')
-    parse_color('1, 2, 30')
-    parse_color('bgr(100, 22, 13)')
-    parse_color('rgb(4%, 5%, 6%)')
-    parse_color('rgb(1, 2, 3)')
