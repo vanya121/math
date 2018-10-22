@@ -62,11 +62,3 @@ def parse_color(color):
         return total_answer
     except Exception:
         return None
-
-
-if __name__ == "__main__":
-    print([parse_color('#Abaaaa'),
-    parse_color('1as, 2, 30'),
-    parse_color('bgr(-1, 22, 13)'),
-    parse_color('rgb(4%, 5%, 100)'),
-    parse_color('rgb(1, 2, 3)')])
