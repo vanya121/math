@@ -62,7 +62,6 @@ def shuffle_text(text, letters_to_shuffle):
     return answer
 
 
-if __name__ == "__main__": 
-    text = 'рассмотрим плоскость  и две параллельные прямые расположенные так что прямая лежит в плоскости'
+if __name__ == "__main__":
+    text = 'рассмотрим плоскость  и две параллельные прямые'
     print(shuffle_text(text, 2))
- 
