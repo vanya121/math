@@ -32,6 +32,17 @@ def parse_color(color):
             color = ','.join(color.split('('))
             color = color.split(',')
             ans = []
+            kl = 0
+            for i in range(3):
+                if color[i + 1][len(color[i + 1]) - 1] == r'%':
+                    kl = 1
+            if kl == 1:
+                if color[1][len(color[1]) - 1] != r'%':
+                    return None
+                if color[2][len(color[2]) - 1] != r'%':
+                    return None
+                if color[3][len(color[3]) - 1] != r'%':
+                    return None
             for i in range(3):
                 if color[i + 1][len(color[i + 1]) - 1] == r'%':
                     color[i + 1] = color[i + 1][:-1]
@@ -51,3 +62,11 @@ def parse_color(color):
         return total_answer
     except Exception:
         return None
+
+
+if __name__ == "__main__":
+    print([parse_color('#Abaaaa'),
+    parse_color('1as, 2, 30'),
+    parse_color('bgr(-1, 22, 13)'),
+    parse_color('rgb(4%, 5%, 100)'),
+    parse_color('rgb(1, 2, 3)')])
