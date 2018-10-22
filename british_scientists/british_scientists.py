@@ -44,11 +44,11 @@ def shuffle_text(text, letters_to_shuffle):
         if a[i] == 1:
             sh.append(new_text[i])
         if a[i] == 2:
-            j = -1
+            j = 0
             sh_lft = []
             sh_rgt = []
             for d in sh:
-                if j < letters_to_shuffle + 1:
+                if j < letters_to_shuffle:
                     sh_lft.append(d)
                 else:
                     sh_rgt.append(d)
@@ -62,6 +62,7 @@ def shuffle_text(text, letters_to_shuffle):
     return answer
 
 
-if __name__ == "__main__":
-    text = 'Ваня просил без обзыва'
-    print(shuffle_text(text, 1))
+if __name__ == "__main__": 
+    text = 'рассмотрим плоскость  и две параллельные прямые расположенные так что прямая лежит в плоскости'
+    print(shuffle_text(text, 2))
+ 
