@@ -44,7 +44,7 @@ def shuffle_text(text, letters_to_shuffle):
         if a[i] == 1:
             sh.append(new_text[i])
         if a[i] == 2:
-            j = 0
+            j = -1
             sh_lft = []
             sh_rgt = []
             for d in sh:
@@ -52,7 +52,7 @@ def shuffle_text(text, letters_to_shuffle):
                     sh_lft.append(d)
                 else:
                     sh_rgt.append(d)
-                ++j
+                j += 1
             random.shuffle(sh_lft)
             sh = sh_lft + sh_rgt
             answer += sh
