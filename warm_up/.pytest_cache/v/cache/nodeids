@@ -1,0 +1,6 @@
+[
+  "test_public.py::test_transpose[transpose_test_case_0]",
+  "test_public.py::test_uniq[uniq_test_case_0]",
+  "test_public.py::test_dict_merge[dict_merge_test_case_0]",
+  "test_public.py::test_product[product_test_case_0]"
+]
