@@ -1,17 +1,26 @@
 class Node(object):
     """
     class storing the current graph table
+
+    metods:
+
     """
     def __init__(self):
         self.data = []
 
     def create(self, input):
-        """create table"""
+        """
+        create table
+        :param input:
+        :return:
+        """
         self.data = input
 
     def map(self, mapper):
         """
         generator that applies mapper to each row of the table
+        :param mapper:
+        :return:
         """
         for item in self.data:
             yield from mapper(item)
@@ -19,6 +28,8 @@ class Node(object):
     def reduce(self, tupal):
         """
         generator that applies a reducer to rows of a table with a key 'key'
+        :param tupal:
+        :return:
         """
         key = tupal[0]
         reducer = tupal[1]
@@ -38,6 +49,8 @@ class Node(object):
         """
         generator that sequentially calls the transmitted fold on
         the pair (state, new line) and returns the changed state
+        :param tupal:
+        :return:
         """
         state = tupal[0]
         folder = tupal[1]
@@ -48,6 +61,8 @@ class Node(object):
     def sort(self, key):
         """
         sorts the table according to the key
+        :param key:
+        :return:
         """
         from operator import itemgetter
         self.data.sort(key=itemgetter(*key))
@@ -55,6 +70,8 @@ class Node(object):
     def join(self, tupal):
         """
         the operation of combining tables by key by one of the methods 'left', 'right', 'inner', 'outer'
+        :param tupal:
+        :return:
         """
         keys = tupal[0]
         joined_g = tupal[1].node.data
@@ -107,6 +124,9 @@ class Graph(object):
     def add_name(self, *name, **kwargs):
         """
         adds graph and table names and determines the start
+        :param name:
+        :param kwargs:
+        :return:
         """
         for item in name:
             self.names.append(item)
@@ -116,20 +136,27 @@ class Graph(object):
     def add_map(self, mapper):
         """
         adds a map operation on the table
+        :param mapper:
+        :return:
         """
         self.functions.append('map')
         self.args.append(mapper)
 
     def add_sort(self, key):
         """
-         adds a sort operation on the table
-         """
+        adds a sort operation on the table
+        :param key:
+        :return:
+        """
         self.functions.append('sort')
         self.args.append(key)
 
     def add_reduce(self, key, reducer):
         """
         adds a reduce operation on the table
+        :param key:
+        :param reducer:
+        :return:
         """
         self.functions.append('reduce')
         self.args.append((key, reducer))
@@ -137,6 +164,9 @@ class Graph(object):
     def add_fold(self, state, folder):
         """
         adds a fold operation on the table
+        :param state:
+        :param folder:
+        :return:
         """
         self.functions.append('fold')
         self.args.append((state, folder))
@@ -144,6 +174,10 @@ class Graph(object):
     def add_join(self, key, joined_g, type):
         """
         adds a join operation on the table
+        :param key:
+        :param joined_g:
+        :param type:
+        :return:
         """
         self.functions.append('join')
         self.args.append((key, joined_g, type))
@@ -151,6 +185,8 @@ class Graph(object):
     def run(self, **kwargs):
         """
         starts the calculation of the table
+        :param kwargs:
+        :return:
         """
         for item in self.names:
             if type(item) == Graph:
@@ -181,6 +217,10 @@ class Graph(object):
 def merg_left(*keys, data_first, data_second):
     """
     generator for operations 'left join' and 'right join'
+    :param keys:
+    :param data_first:
+    :param data_second:
+    :return:
     """
     key_first = []
     key_second = []
@@ -218,6 +258,10 @@ def merg_left(*keys, data_first, data_second):
 def merg_outer(*keys, data_first, data_second):
     """
     generator for oreration outer join
+    :param keys:
+    :param data_first:
+    :param data_second:
+    :return:
     """
     key_first = []
     key_second = []
@@ -262,6 +306,10 @@ def merg_outer(*keys, data_first, data_second):
 def merg_inner(*keys, data_first, data_second):
     """
     generator for oreration inner join
+    :param keys:
+    :param data_first:
+    :param data_second:
+    :return:
     """
     key_first = []
     key_second = []
@@ -289,6 +337,9 @@ def merg_inner(*keys, data_first, data_second):
 def merg(first, second):
     """
     join table rows
+    :param first:
+    :param second:
+    :return:
     """
     new_dict = {}
     for key in first:
