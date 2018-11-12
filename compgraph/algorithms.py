@@ -3,7 +3,7 @@ from lib import Graph
 
 def split_word(stroka):
     import re
-    words = re.sub("[^\w]", " ", stroka["text"]).lower().split()
+    words = re.sub("[\w]", " ", stroka["text"]).lower().split()
     for word in words:
         yield {'doc_id': stroka['doc_id'], 'text': word}
 
@@ -52,7 +52,6 @@ def top_three_tf_idf_word_reducer(strocs):
             from operator import itemgetter
             top_three_idf.sort(key=itemgetter('tf_idf'), reverse=True)
     yield from top_three_idf
-
 
 
 def build_word_count_graph(input_stream, text_column='text', count_column='count'):

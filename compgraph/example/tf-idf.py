@@ -71,5 +71,6 @@ if __name__ == "__main__":
     calc_index.add_sort(key=('text',))
     calc_index.add_reduce(key=('text',), reducer=top_three_tf_idf_word_reducer)
     import json
-    result = calc_index.run(texts=list(json.loads(line) for line in open("/home/ggg/krutov_i/compgraph/resource/text_corpus.txt", 'r')))
+    result = calc_index.run(texts=list(json.loads(line)
+                                       for line in open("/home/ggg/krutov_i/compgraph/resource/text_corpus.txt", 'r')))
     json.dump(result, open("/home/ggg/krutov_i/compgraph/example/tf_idf_on_text_corpus.txt", 'w'))

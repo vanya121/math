@@ -203,7 +203,8 @@ def merg_left(*keys, data_first, data_second):
         else:
             if itemgetter(*key_first)(data_first[i]) == itemgetter(*key_second)(data_second[j]):
                 j_ = j
-                while j_ < len(data_second) and itemgetter(*key_first)(data_first[i]) == itemgetter(*key_second)(data_second[j_]):
+                while j_ < len(data_second) and itemgetter(*key_first)(data_first[i])\
+                        == itemgetter(*key_second)(data_second[j_]):
                     yield from merg(data_first[i], data_second[j_])
                     j_ += 1
                 i += 1

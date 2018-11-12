@@ -19,5 +19,6 @@ if __name__ == "__main__":
     gwc.add_reduce(key=('text',), reducer=count_word)
     gwc.add_sort(key=('count',))
     import json
-    result = gwc.run(docs=list(json.loads(line) for line in open("/home/ggg/krutov_i/compgraph/resource/text_corpus.txt", 'r')))
+    result = gwc.run(docs=list(json.loads(line)
+                               for line in open("/home/ggg/krutov_i/compgraph/resource/text_corpus.txt", 'r')))
     json.dump(result, open("/home/ggg/krutov_i/compgraph/example/word_count_on_text_corpus.txt", 'w'))
