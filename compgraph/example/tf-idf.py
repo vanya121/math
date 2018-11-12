@@ -2,8 +2,7 @@ from lib import Graph
 
 
 def split_word(stroka):
-    import re
-    words = re.sub("[^\w]", " ", stroka["text"]).lower().split()
+    words = stroka["text"].lower().split()
     for word in words:
         yield {'doc_id': stroka['doc_id'], 'text': word}
 
