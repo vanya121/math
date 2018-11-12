@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="898aa770-c15a-475f-94cf-b70ea15b3e81" name="Default Changelist" comment="" />
+    <list default="true" id="898aa770-c15a-475f-94cf-b70ea15b3e81" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/example/Word_Count.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/tf-idf.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/Graph.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../british_scientists/british_scientists.py" beforeDir="false" afterPath="$PROJECT_DIR$/../british_scientists/british_scientists.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../caesar_cipher/caesar_cipher.py" beforeDir="false" afterPath="$PROJECT_DIR$/../caesar_cipher/caesar_cipher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algorithms.py" beforeDir="false" afterPath="$PROJECT_DIR$/algorithms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_public.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_public.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../counter_utils/counter_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/../counter_utils/counter_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flat_it/flat_it.py" beforeDir="false" afterPath="$PROJECT_DIR$/../flat_it/flat_it.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flat_it/test_public.py" beforeDir="false" afterPath="$PROJECT_DIR$/../flat_it/test_public.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../forgotten_password/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../forgotten_password/forgotten_password.py" beforeDir="false" afterPath="$PROJECT_DIR$/../forgotten_password/forgotten_password.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../forgotten_password/test_public.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../life_game/life_game.py" beforeDir="false" afterPath="$PROJECT_DIR$/../life_game/life_game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../list_twist/list_twist.py" beforeDir="false" afterPath="$PROJECT_DIR$/../list_twist/list_twist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../list_twist/test_public.py" beforeDir="false" afterPath="$PROJECT_DIR$/../list_twist/test_public.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../palindromes/palindromes.py" beforeDir="false" afterPath="$PROJECT_DIR$/../palindromes/palindromes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../password/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../password/test_public.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rgb/rgb.py" beforeDir="false" afterPath="$PROJECT_DIR$/../rgb/rgb.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../roi/roi.py" beforeDir="false" afterPath="$PROJECT_DIR$/../roi/roi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vm/cases.py" beforeDir="false" afterPath="$PROJECT_DIR$/../vm/cases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vm/vm.py" beforeDir="false" afterPath="$PROJECT_DIR$/../vm/vm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../volatility/volatility.py" beforeDir="false" afterPath="$PROJECT_DIR$/../volatility/volatility.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../warm_up/warm_up.py" beforeDir="false" afterPath="$PROJECT_DIR$/../warm_up/warm_up.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +83,7 @@
         <entry file="file://$PROJECT_DIR$/algorithms.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+              <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
             </state>
           </provider>
         </entry>
@@ -84,8 +112,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test_public.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="173" column="66" lean-forward="true" selection-start-line="173" selection-start-column="66" selection-end-line="173" selection-end-column="66" />
+            <state relative-caret-position="78">
+              <caret line="101" column="12" lean-forward="true" selection-start-line="101" selection-start-column="12" selection-end-line="101" selection-end-column="12" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -337,7 +365,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-3" y="17" width="1372" height="754" extended-state="7" />
+    <frame x="-3" y="17" width="1372" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
@@ -399,7 +427,7 @@
     <entry file="file://$PROJECT_DIR$/algorithms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
         </state>
       </provider>
     </entry>
@@ -446,8 +474,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test_public.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="173" column="66" lean-forward="true" selection-start-line="173" selection-start-column="66" selection-end-line="173" selection-end-column="66" />
+        <state relative-caret-position="78">
+          <caret line="101" column="12" lean-forward="true" selection-start-line="101" selection-start-column="12" selection-end-line="101" selection-end-column="12" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
