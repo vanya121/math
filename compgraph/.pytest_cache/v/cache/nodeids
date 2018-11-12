@@ -1,0 +1,7 @@
+[
+  "test_public.py::test_word_count",
+  "test_public.py::test_word_count_multiple_call",
+  "test_public.py::test_tf_idf",
+  "test_public.py::test_pmi",
+  "test_public.py::test_yandex_maps"
+]
