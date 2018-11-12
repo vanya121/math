@@ -1,5 +1,7 @@
 class Node(object):
-    """class storing the current graph table"""
+    """
+    class storing the current graph table
+    """
     def __init__(self):
         self.data = []
 
@@ -8,12 +10,16 @@ class Node(object):
         self.data = input
 
     def map(self, mapper):
-        """generator that applies mapper to each row of the table"""
+        """
+        generator that applies mapper to each row of the table
+        """
         for item in self.data:
             yield from mapper(item)
 
     def reduce(self, tupal):
-        """generator that applies a reducer to rows of a table with a key 'key'"""
+        """
+        generator that applies a reducer to rows of a table with a key 'key'
+        """
         key = tupal[0]
         reducer = tupal[1]
         from operator import itemgetter
@@ -29,8 +35,10 @@ class Node(object):
             yield from reducer(list_of_eq_key)
 
     def fold(self, tupal):
-        """generator that sequentially calls the transmitted fold on
-        the pair (state, new line) and returns the changed state"""
+        """
+        generator that sequentially calls the transmitted fold on
+        the pair (state, new line) and returns the changed state
+        """
         state = tupal[0]
         folder = tupal[1]
         for item in self.data:
@@ -38,12 +46,16 @@ class Node(object):
         yield state
 
     def sort(self, key):
-        """sorts the table according to the key"""
+        """
+        sorts the table according to the key
+        """
         from operator import itemgetter
         self.data.sort(key=itemgetter(*key))
 
     def join(self, tupal):
-        """the operation of combining tables by key by one of the methods 'left', 'right', 'inner', 'outer'"""
+        """
+        the operation of combining tables by key by one of the methods 'left', 'right', 'inner', 'outer'
+        """
         keys = tupal[0]
         joined_g = tupal[1].node.data
         type = tupal[2]
@@ -74,7 +86,9 @@ class Node(object):
 
 
 class Graph(object):
-    """a class that stores a table and applies operations to it"""
+    """
+    a class that stores a table and applies operations to it
+    """
     def __init__(self):
         """node - table, functions - stores the names of the methods to be applied to the table,
         args - stores arguments for these functions, names - list of graphs and table names to be
@@ -91,39 +105,53 @@ class Graph(object):
         self.start = False
 
     def add_name(self, *name, **kwargs):
-        """adds graph and table names and determines the start"""
+        """
+        adds graph and table names and determines the start
+        """
         for item in name:
             self.names.append(item)
         if kwargs:
             self.start = kwargs['start']
 
     def add_map(self, mapper):
-        """adds a map operation on the table"""
+        """
+        adds a map operation on the table
+        """
         self.functions.append('map')
         self.args.append(mapper)
 
     def add_sort(self, key):
-        """adds a sort operation on the table"""
+        """
+         adds a sort operation on the table
+         """
         self.functions.append('sort')
         self.args.append(key)
 
     def add_reduce(self, key, reducer):
-        """adds a reduce operation on the table"""
+        """
+        adds a reduce operation on the table
+        """
         self.functions.append('reduce')
         self.args.append((key, reducer))
 
     def add_fold(self, state, folder):
-        """adds a fold operation on the table"""
+        """
+        adds a fold operation on the table
+        """
         self.functions.append('fold')
         self.args.append((state, folder))
 
     def add_join(self, key, joined_g, type):
-        """adds a join operation on the table"""
+        """
+        adds a join operation on the table
+        """
         self.functions.append('join')
         self.args.append((key, joined_g, type))
 
     def run(self, **kwargs):
-        """starts the calculation of the table"""
+        """
+        starts the calculation of the table
+        """
         for item in self.names:
             if type(item) == Graph:
                 self.result.append(item.run(**kwargs))
@@ -151,7 +179,9 @@ class Graph(object):
 
 
 def merg_left(*keys, data_first, data_second):
-    """generator for operations 'left join' and 'right join'"""
+    """
+    generator for operations 'left join' and 'right join'
+    """
     key_first = []
     key_second = []
     for i in range(len(keys) // 2):
@@ -185,7 +215,9 @@ def merg_left(*keys, data_first, data_second):
 
 
 def merg_outer(*keys, data_first, data_second):
-    """generator for oreration outer join"""
+    """
+    generator for oreration outer join
+    """
     key_first = []
     key_second = []
     for i in range(len(keys) // 2):
@@ -227,7 +259,9 @@ def merg_outer(*keys, data_first, data_second):
 
 
 def merg_inner(*keys, data_first, data_second):
-    """generator for oreration inner join"""
+    """
+    generator for oreration inner join
+    """
     key_first = []
     key_second = []
     for i in range(len(keys) // 2):
@@ -252,7 +286,9 @@ def merg_inner(*keys, data_first, data_second):
 
 
 def merg(first, second):
-    """join table rows"""
+    """
+    join table rows
+    """
     new_dict = {}
     for key in first:
         new_dict[key] = first[key]
