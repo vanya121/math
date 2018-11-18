@@ -1,0 +1,23 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+bs4 = "*"
+requests = "*"
+lxml = "*"
+beautifulsoup = "*"
+beautifulsoupselect = "*"
+scrapy-beautifulsoup = "*"
+ipython-beautifulsoup = "*"
+beautifulsoup4-slurp = "*"
+django-beautifulsoup-test = "*"
+json-lxml = "*"
+html = "*"
+display = "*"
+
+[requires]
+python_version = "3.6.3"
