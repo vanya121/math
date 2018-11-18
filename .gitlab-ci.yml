@@ -1,0 +1,9 @@
+grade:
+  image: eu.gcr.io/shad-ts/grader/py
+  only:
+    - /^submits/.*$/
+  script:
+    - cd /opt/shad/private
+    - chmod -R 777 /opt/shad/private
+    - cp ../.deadlines.yml ./
+    - python3 grade.py grade
