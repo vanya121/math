@@ -1,0 +1,8 @@
+__pycache__
+.idea
+.DS_Store
+.pytest_cache
+.cache
+venv
+*/__pycache__/
+readme
